@@ -7,6 +7,9 @@ metadata:
     app: {{ .Values.frontend.name }}
     release: {{ .Values.release.name }}
 spec:
+  # Cho phép quét Service ở mọi Namespace
+  namespaceSelector:
+    any: true
   selector:
     matchLabels:
       app: {{ .Values.frontend.name }}
