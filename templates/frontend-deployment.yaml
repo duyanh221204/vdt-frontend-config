@@ -21,3 +21,9 @@ spec:
             limits:
               memory: {{ .Values.frontend.resources.limits.memory }}
               cpu: {{ .Values.frontend.resources.limits.cpu }}
+        - name: nginx-exporter
+          image: nginx/nginx-prometheus-exporter:latest
+          args:
+            - "--nginx.scrape-uri=http://127.0.0.1/stub_status"
+          ports:
+            - containerPort: {{ .Values.frontend.metricsPort }}
