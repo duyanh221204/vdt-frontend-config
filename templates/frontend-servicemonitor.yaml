@@ -2,14 +2,14 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ .Values.frontend.monitor.name }}
-  namespace: monitoring
+  # namespace: monitoring
   labels:
     app: {{ .Values.frontend.name }}
     release: {{ .Values.release.name }}
 spec:
   # Cho phép quét Service ở mọi Namespace
-  namespaceSelector:
-    any: true
+  # namespaceSelector:
+  #   any: true
   selector:
     matchLabels:
       app: {{ .Values.frontend.name }}
